@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VN-MINECRAFT CHEATS</title>
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <!-- Иконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: rgba(20, 20, 22, 0.6);
+            --primary: #8b5cf6;
+            --secondary: #ec4899;
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glow: 0 0 20px rgba(139, 92, 246, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(236, 72, 153, 0.08) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(5, 5, 5, 0.7);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+        
+        .logo i { 
+            color: var(--primary); 
+            font-size: 1.6rem;
+        }
+        
+        .logo span {
+            background: linear-gradient(to right, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+        }
+
+        /* --- Hero --- */
+        header.hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- Sections --- */
+        .section-title {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i { color: var(--secondary); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- Cards --- */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--glow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .status {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status.hot { background: rgba(236, 72, 153, 0.2); color: #ec4899; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .status.new { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        .card h3 { font-size: 1.4rem; margin-bottom: 8px; }
+        
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .tags { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tag {
+            font-size: 0.75rem;
+            color: #d4d4d8;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .btn-action {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--glass-border);
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигация -->
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-skull"></i>
+            <span>VN-MINECRAFT CHEATS</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Главная</a>
+            <a href="#configs">Конфиги</a>
+            <a href="#clients">Клиенты</a>
+        </div>
+    </nav>
+
+    <!-- Главный экран -->
+    <header class="hero" id="home">
+        <h1>Библиотека читов</h1>
+        <p class="subtitle">Лучшие конфиги и клиенты для доминации</p>
+    </header>
+
+    <!-- Раздел КОНФИГИ -->
+    <div class="section-title" id="configs">
+        <i class="fa-solid fa-file-gear"></i> Конфигурации
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            
+            <!-- Essence Config -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box" style="color: #fbbf24; background: rgba(251, 191, 36, 0.1);">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <span class="status hot">TOP RATED</span>
+                </div>
+                <h3>Essence Config</h3>
+                <div class="tags">
+                    <span class="tag">1.21.4</span>
+                    <span class="tag">HvH</span>
+                    <span class="tag">Legit</span>
+                </div>
+                <p>Официальная конфигурация для Essence Client. Идеальный баланс между визуалом и функционалом.</p>
+                
+                <a href="https://fylio.com/d/e8da7d28-df61-414f-aea9-80be9ed5a1e0" class="btn-action">
+                    Скачать Конфиг <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+            <!-- Monoton Config -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1);">
+                        <i class="fa-solid fa-file-code"></i>
+                    </div>
+                    <span class="status new">NEW</span>
+                </div>
+                <h3>Monoton Config</h3>
+                <div class="tags">
+                    <span class="tag">1.16.5</span>
+                    <span class="tag">PVP</span>
+                    <span class="tag">Optimized</span>
+                </div>
+                <p>Профессиональный конфиг для Monoton. Настроен под старые версии игры для максимального FPS.</p>
+                
+                <a href="https://fylio.com/d/683c5d9a-03ee-4ab4-81d5-6a40776f97b5" class="btn-action">
+                    Скачать Конфиг <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+            <!-- Exosware Config -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box" style="color: #ef4444; background: rgba(239, 68, 68, 0.1);">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <span class="status hot">PREMIUM</span>
+                </div>
+                <h3>Exosware Config</h3>
+                <div class="tags">
+                    <span class="tag">1.21.4</span>
+                    <span class="tag">Ghost</span>
+                    <span class="tag">Safe</span>
+                </div>
+                <p>Эксклюзивный конфиг для Exosware. Максимальная защита от банов и плавные настройки аимбота.</p>
+                
+                <a href="https://fylio.com/d/833db096-6868-4bb2-b30d-ebf7aae552e4" class="btn-action">
+                    Скачать Конфиг <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+            <!-- Rich Config -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box" style="color: #eab308; background: rgba(234, 179, 8, 0.1);">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <span class="status new">LATEST</span>
+                </div>
+                <h3>Rich Config</h3>
+                <div class="tags">
+                    <span class="tag">1.21.1</span>
+                    <span class="tag">Universal</span>
+                    <span class="tag">Balanced</span>
+                </div>
+                <p>Универсальный конфиг для Rich Client. Отлично подходит как для легитной игры, так и для HvH сессий.</p>
+                
+                <a href="https://fylio.com/d/776f5c4b-d424-4a54-9197-8f75ffe21248" class="btn-action">
+                    Скачать Конфиг <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+            <!-- Wild Config -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box" style="color: #22c55e; background: rgba(34, 197, 94, 0.1);">
+                        <i class="fa-solid fa-tree"></i>
+                    </div>
+                    <span class="status hot">ANARCHY</span>
+                </div>
+                <h3>Wild Config</h3>
+                <div class="tags">
+                    <span class="tag">1.21.4</span>
+                    <span class="tag">Survival</span>
+                    <span class="tag">Utility</span>
+                </div>
+                <p>Идеальный выбор для выживания и анархии. Настроен на автоматизацию рутинных задач и защиту баз.</p>
+                
+                <a href="https://fylio.com/d/2337f4ad-3f55-4eae-a164-4a029cb45b42" class="btn-action">
+                    Скачать Конфиг <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Раздел КЛИЕНТЫ -->
+    <div class="section-title" id="clients">
+        <i class="fa-solid fa-gamepad"></i> Клиенты
+    </div>
+    
+    <div class="container">
+        <div class="grid">
+            
+            <!-- Essence Client -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.1);">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <span class="status hot">POPULAR</span>
+                </div>
+                <h3>Essence Client</h3>
+                <div class="tags">
+                    <span class="tag">1.21.4</span>
+                    <span class="tag">Fabric</span>
+                    <span class="tag">Free</span>
+                </div>
+                <p>Мощнейший клиент для доминирования на серверах. Уникальные обходы античитов.</p>
+                
+                <a href="https://fylio.com/d/279831be-7b44-482f-ae24-0cfd0cc0805c" class="btn-action">
+                    Скачать Клиент <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Monoton Client -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box" style="color: #10b981; background: rgba(16, 185, 129, 0.1);">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <span class="status new">1.16.5</span>
+                </div>
+                <h3>Monoton Client</h3>
+                <div class="tags">
+                    <span class="tag">1.16.5</span>
+                    <span class="tag">Forge</span>
+                    <span class="tag">Legacy</span>
+                </div>
+                <p>Легендарный выбор для версий 1.16.5. Стабильная работа и красивые визуалы.</p>
+                
+                <a href="https://fylio.com/d/74e285ab-427a-4508-972d-cf4a81326e00" class="btn-action">
+                    Скачать Клиент <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Exosware Client -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box" style="color: #f97316; background: rgba(249, 115, 22, 0.1);">
+                        <i class="fa-solid fa-dragon"></i>
+                    </div>
+                    <span class="status new">LATEST</span>
+                </div>
+                <h3>Exosware Client</h3>
+                <div class="tags">
+                    <span class="tag">1.21.4</span>
+                    <span class="tag">External</span>
+                    <span class="tag">Undetected</span>
+                </div>
+                <p>Приватный клиент нового поколения. Внешний софт с минимальным влиянием на FPS.</p>
+                
+                <a href="https://fylio.com/d/ad8067b7-891b-4b85-8a22-de84ac7e706d" class="btn-action">
+                    Скачать Клиент <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Rich Client -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box" style="color: #0ea5e9; background: rgba(14, 165, 233, 0.1);">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <span class="status hot">TRENDING</span>
+                </div>
+                <h3>Rich Client</h3>
+                <div class="tags">
+                    <span class="tag">1.21.1</span>
+                    <span class="tag">Internal</span>
+                    <span class="tag">Smooth</span>
+                </div>
+                <p>Элегантный и мощный клиент. Известен своими плавными анимациями и отличным GUI интерфейсом.</p>
+                
+                <a href="https://fylio.com/d/4c6710d8-4958-4b01-b36c-390091027186" class="btn-action">
+                    Скачать Клиент <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Wild Client -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-box" style="color: #14b8a6; background: rgba(20, 184, 166, 0.1);">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <span class="status new">1.21.4</span>
+                </div>
+                <h3>Wild Client</h3>
+                <div class="tags">
+                    <span class="tag">1.21.4</span>
+                    <span class="tag">Exploration</span>
+                    <span class="tag">Utility</span>
+                </div>
+                <p>Клиент для настоящих исследователей. Улучшенные инструменты для поиска ресурсов и навигации в мире.</p>
+                
+                <a href="https://fylio.com/d/c5eb8fe1-700e-4613-a535-cc65b076d3ec" class="btn-action">
+                    Скачать Клиент <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 VN-MINECRAFT CHEATS. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
